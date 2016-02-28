@@ -2,7 +2,7 @@ import UIKit
 
 private let collectionViewCellReuseIdentifier = "collection-view-cell-reuse-identifier"
 
-class CollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class CollectionViewController: UICollectionViewController {
     let businesses = ["V-Cafe", "Sextant", "Super Que", "Vaper in Reverse", "Little Griddle"]
 
     override func viewDidLoad() {
@@ -33,10 +33,10 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     // MARK: - UICollectionViewDelegateFlowLayout
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 600
+        return UIScreen.mainScreen().bounds.height
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 600
+        return UIScreen.mainScreen().bounds.width / 8
     }
 }

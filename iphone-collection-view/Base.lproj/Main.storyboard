@@ -29,12 +29,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.14603750409999999" green="0.63766849039999995" blue="0.81994974610000004" alpha="1" colorSpace="calibratedRGB"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="d0q-1x-yLg">
-                            <size key="itemSize" width="188" height="107"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
+                        <collectionViewLayout key="collectionViewLayout" id="SKa-0O-UH6" customClass="CollectionViewCustomFlowLayout" customModule="iphone_collection_view" customModuleProvider="target"/>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collection-view-cell-reuse-identifier" id="LHT-sZ-5sD" customClass="CollectionViewCell" customModule="iphone_collection_view" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="260" height="80"/>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F5BBCF41C7FE0CE00A3423F /* CollectionViewCustomFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5BBCF31C7FE0CE00A3423F /* CollectionViewCustomFlowLayout.swift */; };
 		7FA2EC9D1C7ECFFB008757B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA2EC9C1C7ECFFB008757B1 /* AppDelegate.swift */; };
 		7FA2ECA41C7ECFFB008757B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FA2ECA21C7ECFFB008757B1 /* Main.storyboard */; };
 		7FA2ECA61C7ECFFB008757B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FA2ECA51C7ECFFB008757B1 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7F5BBCF31C7FE0CE00A3423F /* CollectionViewCustomFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCustomFlowLayout.swift; sourceTree = "<group>"; };
 		7FA2EC991C7ECFFB008757B1 /* iphone-collection-view.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iphone-collection-view.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FA2EC9C1C7ECFFB008757B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7FA2ECA31C7ECFFB008757B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 				7FA2ECA51C7ECFFB008757B1 /* Assets.xcassets */,
 				7FA2ECB01C7ED4F5008757B1 /* CollectionViewCell.swift */,
 				7FA2ECB21C7ED519008757B1 /* CollectionViewController.swift */,
+				7F5BBCF31C7FE0CE00A3423F /* CollectionViewCustomFlowLayout.swift */,
 				7FA2ECAA1C7ECFFB008757B1 /* Info.plist */,
 				7FA2ECA71C7ECFFB008757B1 /* LaunchScreen.storyboard */,
 				7FA2ECA21C7ECFFB008757B1 /* Main.storyboard */,
@@ -141,6 +144,7 @@
 				7FA2ECB31C7ED519008757B1 /* CollectionViewController.swift in Sources */,
 				7FA2ECB11C7ED4F5008757B1 /* CollectionViewCell.swift in Sources */,
 				7FA2EC9D1C7ECFFB008757B1 /* AppDelegate.swift in Sources */,
+				7F5BBCF41C7FE0CE00A3423F /* CollectionViewCustomFlowLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,7 +283,7 @@
 				7FA2ECAC1C7ECFFB008757B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		7FA2ECAD1C7ECFFB008757B1 /* Build configuration list for PBXNativeTarget "iphone-collection-view" */ = {
 			isa = XCConfigurationList;
@@ -288,6 +292,7 @@
 				7FA2ECAF1C7ECFFB008757B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
