@@ -38,19 +38,41 @@
                                     <rect key="frame" x="0.0" y="0.0" width="260" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RYX-5Q-rdw">
-                                            <rect key="frame" x="109" y="29" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mKU-0O-Oaw">
+                                            <rect key="frame" x="0.0" y="0.0" width="260" height="72"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coffee Roaster" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RYX-5Q-rdw">
+                                                    <rect key="frame" x="73" y="26" width="115" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="RYX-5Q-rdw" firstAttribute="centerX" secondItem="mKU-0O-Oaw" secondAttribute="centerX" id="24q-Qb-PUL"/>
+                                                <constraint firstItem="RYX-5Q-rdw" firstAttribute="centerY" secondItem="mKU-0O-Oaw" secondAttribute="centerY" id="Zgh-GD-Mdb"/>
+                                            </constraints>
+                                        </view>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gI-gI-MfM">
+                                            <rect key="frame" x="100" y="50" width="60" height="30"/>
+                                            <color key="backgroundColor" red="0.96754205230000001" green="0.58919614549999999" blue="0.2290829271" alpha="1" colorSpace="calibratedRGB"/>
+                                            <state key="normal" title="Check in"/>
+                                            <connections>
+                                                <action selector="checkInButtonTouched:" destination="LHT-sZ-5sD" eventType="touchUpInside" id="xvk-w3-fdB"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="RYX-5Q-rdw" firstAttribute="centerX" secondItem="LHT-sZ-5sD" secondAttribute="centerX" id="d0r-oR-1ac"/>
-                                    <constraint firstItem="RYX-5Q-rdw" firstAttribute="centerY" secondItem="LHT-sZ-5sD" secondAttribute="centerY" id="h8c-nr-Yo0"/>
+                                    <constraint firstAttribute="trailing" secondItem="mKU-0O-Oaw" secondAttribute="trailing" id="7Lv-7N-p62"/>
+                                    <constraint firstItem="mKU-0O-Oaw" firstAttribute="top" secondItem="LHT-sZ-5sD" secondAttribute="top" id="ApT-Zu-JZ6"/>
+                                    <constraint firstAttribute="bottom" secondItem="7gI-gI-MfM" secondAttribute="bottom" id="GHU-Lf-Di4"/>
+                                    <constraint firstItem="7gI-gI-MfM" firstAttribute="centerX" secondItem="LHT-sZ-5sD" secondAttribute="centerX" id="nA8-jy-BjQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="mKU-0O-Oaw" secondAttribute="bottom" constant="8" id="oUJ-un-6li"/>
+                                    <constraint firstItem="mKU-0O-Oaw" firstAttribute="leading" secondItem="LHT-sZ-5sD" secondAttribute="leading" id="puO-g1-XNd"/>
                                 </constraints>
                                 <size key="customSize" width="260" height="80"/>
                                 <connections>
