@@ -4,6 +4,8 @@ class CollectionViewCustomFlowLayout: UICollectionViewFlowLayout {
     let screenWidth = UIScreen.mainScreen().bounds.width
     let screenHeight = UIScreen.mainScreen().bounds.height
     let cardSize = CGSizeMake(200, 80)
+    let cardScaleValue = CGFloat(0.7)
+    let cardAlphaValue = CGFloat(0.9)
 
     override func prepareLayout() {
         let sideMargin = (screenWidth - cardSize.width) / 2
@@ -25,7 +27,7 @@ class CollectionViewCustomFlowLayout: UICollectionViewFlowLayout {
             return super.targetContentOffsetForProposedContentOffset(proposedContentOffset, withScrollingVelocity: velocity)
         }
         
-        var candidateAttributes: UICollectionViewLayoutAttributes?
+        var updatedAttributes: UICollectionViewLayoutAttributes?
         let proposedContentOffsetCenterX = proposedContentOffset.x + collectionView.bounds.size.width / 2
         
         for attributes in layoutAttributes {
@@ -33,25 +35,23 @@ class CollectionViewCustomFlowLayout: UICollectionViewFlowLayout {
                 continue
             }
             
-            if candidateAttributes == nil {
-                candidateAttributes = attributes
-            }
-            
-            if fabs(attributes.center.x - proposedContentOffsetCenterX) < fabs(candidateAttributes!.center.x - proposedContentOffsetCenterX) {
-                candidateAttributes = attributes
+            if updatedAttributes == nil {
+                updatedAttributes = attributes
+            } else if abs(attributes.center.x - proposedContentOffsetCenterX) < fabs(updatedAttributes!.center.x - proposedContentOffsetCenterX) {
+                updatedAttributes = attributes
             }
         }
         
-        if candidateAttributes == nil {
+        guard let newAttributes = updatedAttributes else {
             return super.targetContentOffsetForProposedContentOffset(proposedContentOffset, withScrollingVelocity: velocity)
         }
         
-        let newOffsetX = candidateAttributes!.center.x - collectionView.bounds.size.width / 2
+        var newOffsetX = newAttributes.center.x - collectionView.bounds.size.width / 2
         let offset = newOffsetX - collectionView.contentOffset.x
         
         if (velocity.x < 0 && offset > 0) || (velocity.x > 0 && offset < 0) {
             let pageWidth = self.itemSize.width + self.minimumLineSpacing
-            newOffsetX + velocity.x > 0 ? pageWidth : -pageWidth
+            newOffsetX += velocity.x > 0 ? pageWidth : -pageWidth
         }
         
         return CGPointMake(newOffsetX, proposedContentOffset.y)
@@ -62,40 +62,37 @@ class CollectionViewCustomFlowLayout: UICollectionViewFlowLayout {
     }
     
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        if self.collectionView == nil {
+        guard let collectionView = self.collectionView,
+              let superAttributes = super.layoutAttributesForElementsInRect(rect)else {
             return super.layoutAttributesForElementsInRect(rect)
         }
         
-        let superAttributes = super.layoutAttributesForElementsInRect(rect)
-        
-        if superAttributes == nil {
-            return nil
-        }
-        
-        let contentOffset = self.collectionView!.contentOffset
-        let size = self.collectionView!.bounds.size
-        
+        let contentOffset = collectionView.contentOffset
+        let size = collectionView.bounds.size
         let visibleRect = CGRectMake(contentOffset.x, contentOffset.y, size.width, size.height)
         let visibleCenterX = CGRectGetMidX(visibleRect)
+        var newAttributesArray = [UICollectionViewLayoutAttributes]()
         
-        var newAttributesArray = Array<UICollectionViewLayoutAttributes>()
+        let fromCenterMin = CGFloat(150)
+        let fromCenterMax = CGFloat(300)
         
-        for attributes in superAttributes! {
-            let newAttributes = attributes.copy() as! UICollectionViewLayoutAttributes
-            newAttributesArray.append(newAttributes)
+        
+        for attributes in superAttributes {
+            guard let newAttributes = attributes.copy() as? UICollectionViewLayoutAttributes else { continue }
             let distanceFromCenter = visibleCenterX - newAttributes.center.x
-            let absDistanceFromCenter = min(abs(distanceFromCenter), 150)
-            let absDistanceFromCenterMax = min(abs(distanceFromCenter), 300)
-            let scale = absDistanceFromCenter * (0.9 - 1) / 200 + 1
-            let transformScale = CGAffineTransformScale(CGAffineTransformMakeScale(scale, scale), scale, scale)
-            newAttributes.transform = transformScale
-            var alpha = fabs(absDistanceFromCenter * (0.7 - 1))
-            if absDistanceFromCenter == 0 {
+            let absDistanceFromCenterMin = min(abs(distanceFromCenter), fromCenterMin)
+            let absDistanceFromCenterMax = min(abs(distanceFromCenter), fromCenterMax)
+            let scale = absDistanceFromCenterMin * (cardScaleValue - 1) / self.cardSize.width + 1
+            newAttributes.transform = CGAffineTransformMakeScale(scale, scale)
+            var alpha = fabs(absDistanceFromCenterMin * (cardAlphaValue - 1))
+            if absDistanceFromCenterMin == 0 {
                 alpha = 1
             } else {
-                alpha = (300 - absDistanceFromCenterMax) / 300 // 600 - 0 / 600
+                alpha = (fromCenterMax - absDistanceFromCenterMax) / fromCenterMax
             }
             newAttributes.alpha = alpha
+            
+            newAttributesArray.append(newAttributes)
         }
         
         return newAttributesArray;
